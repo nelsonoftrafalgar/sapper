@@ -1,32 +1,23 @@
-class ArmedBoard {
-  armedBoard: (string | number)[][]
+import { IBoardItem } from './RawBoard'
+import { getProximityCells } from '../helpers/getProximityCells'
 
-  constructor(rawBoard: string[][]) {
+class ArmedBoard {
+  armedBoard: IBoardItem[][]
+
+  constructor(rawBoard: IBoardItem[][]) {
     this.armedBoard = rawBoard.map((row, rowIdx) => row.map((col, colIdx) => {
-      const proximityCells = this.getProximityCells(rowIdx, colIdx)
-      return col === '1' ? proximityCells.map(this.validateCell(rawBoard)).reduce(this.getMines, []).length : col
+      const proximityCells = getProximityCells(rowIdx, colIdx)
+      const bombs = proximityCells.map(this.validateCell(rawBoard)).reduce(this.getMines, []).length
+      return col.value === '1' ? {id: col.id, value: bombs} : col
     }))
   }
 
-  private getProximityCells = (r: number, c: number) => {
-    return [
-      [r - 1, c],
-      [r - 1, c + 1],
-      [r, c + 1],
-      [r + 1, c + 1],
-      [r + 1, c],
-      [r + 1, c - 1],
-      [r, c - 1],
-      [r - 1, c - 1]
-    ]
-  }
-
-  private validateCell = (gameBoard: string[][]) => (cell: number[]) => {
+  private validateCell = (gameBoard: IBoardItem[][]) => (cell: number[]) => {
     const exists = !cell.some((boardIndex) => boardIndex > (gameBoard.length - 1) || boardIndex < 0)
-    return exists ? gameBoard[cell[0]][cell[1]] : 0
+    return exists ? gameBoard[cell[0]][cell[1]] : ''
   }
 
-  private getMines = (ac: string[], val: string) => val && val !== '1' ? [...ac, val] : ac
+  private getMines = (ac: string[], val: IBoardItem) => val && val.value !== '1' ? [...ac, val] : ac
 }
 
 export default ArmedBoard

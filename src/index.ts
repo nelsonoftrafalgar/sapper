@@ -7,7 +7,7 @@ import { createGame } from './helpers/createGame'
 const table = document.createElement('table')
 const root = document.querySelector('.root')
 
-const BOARD_SIZE = 8
+const BOARD_SIZE = 20
 
 const {rawBoard} = new RawBoard(BOARD_SIZE)
 const {armedBoard} = new ArmedBoard(rawBoard)

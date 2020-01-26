@@ -1,4 +1,9 @@
+import { clearWholeSector } from './clearWholeSector'
+
 // tslint:disable: no-inner-html
+
+const flagIcon = '&#9873;'
+const questionIcon = '&#63;'
 
 export const handleRightClick = () => {
   let clickCache = 0
@@ -16,16 +21,20 @@ export const handleRightClick = () => {
         this.innerHTML = ''
         break
       case 1:
-        this.innerHTML = '&#9873;'
+        this.innerHTML = flagIcon
         break
       case 2:
-        this.innerHTML = '&#63;'
+        this.innerHTML = questionIcon
         break
     }
   }
 }
 
 export const handleLeftClick = function() {
-  const parent = this.parentElement
+  const parent: HTMLTableDataCellElement = this.parentElement
   parent.removeChild(this)
+  parent.dataset.checked = 'true'
+  if (!parent.innerHTML) {
+    clearWholeSector(parent)
+  }
 }
