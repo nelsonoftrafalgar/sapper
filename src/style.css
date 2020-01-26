@@ -13,17 +13,14 @@
   justify-content: center;
 }
 
-table, th, td {
-  border: 1px solid #000;
-  border-collapse: collapse;
-}
-
 .table-data {
   width: 30px;
   height: 30px;
   text-align: center;
   position: relative;
   font-size: 20px;
+  background: #b9b9b9;
+  font-family: sans-serif;
 }
 
 .cell {
@@ -35,5 +32,4 @@ table, th, td {
   right: 0;
   bottom: 0;
   font-size: 22px;
-  opacity: .7;
 }

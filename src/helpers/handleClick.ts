@@ -1,9 +1,8 @@
+import { flagIcon, questionIcon } from '../assets/icons'
+
 import { clearWholeSector } from './clearWholeSector'
 
 // tslint:disable: no-inner-html
-
-const flagIcon = '&#9873;'
-const questionIcon = '&#63;'
 
 export const handleRightClick = () => {
   let clickCache = 0
