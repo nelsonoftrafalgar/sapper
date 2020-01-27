@@ -13,6 +13,8 @@ class GameStatus {
     this.status.innerHTML = icon
   }
 
+  hasBomb = (content: string) => encodeIcon(content).includes(bombIcon)
+
   winGame = () => {
     const parentsWithBombs = []
     const cells = document.querySelectorAll('.cell')
@@ -20,7 +22,7 @@ class GameStatus {
       parentsWithBombs.push(cell.parentElement)
     })
 
-    const onlyBombs = parentsWithBombs.every((parent) => encodeIcon(parent.innerHTML).includes(bombIcon))
+    const onlyBombs = parentsWithBombs.every((parent) => this.hasBomb(parent.innerHTML))
     if (onlyBombs) {
       this.setStatus(winIcon)
     }
@@ -39,10 +41,20 @@ class GameStatus {
     this.isInitialClick = false
   }
 
-  handleGameOver = (icon: string) => {
-    if (encodeIcon(icon) === bombIcon) {
-      this.setStatus(failIcon)
-    }
+  blowUpAllBombs = () => {
+    const bombs = document.querySelectorAll('.table-data')
+    bombs.forEach((bomb) => {
+      if (this.hasBomb(bomb.innerHTML)) {
+        if (bomb.firstElementChild) {
+          bomb.removeChild(bomb.firstElementChild)
+        }
+      }
+    })
+  }
+
+  handleGameOver = () => {
+    this.setStatus(failIcon)
+    this.blowUpAllBombs()
   }
 }
 

@@ -32,10 +32,15 @@ export const handleRightClick = () => {
 
 export const handleLeftClick = function() {
   const parent: HTMLTableDataCellElement = this.parentElement
+  const {startGame, hasBomb, handleGameOver} = gameStatus
   parent.removeChild(this)
-  gameStatus.startGame()
+  startGame()
   parent.dataset.checked = 'true'
   if (!parent.innerHTML) {
     clearWholeSector(parent)
+  }
+  if (hasBomb(parent.innerHTML)) {
+    parent.style.background = 'red'
+    handleGameOver()
   }
 }

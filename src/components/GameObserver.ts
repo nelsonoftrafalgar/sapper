@@ -1,4 +1,3 @@
-import gameStatus from './GameStatus'
 import { handleBombsCount } from '../helpers/handleBombsCount'
 
 class GameObserver {
@@ -14,13 +13,13 @@ class GameObserver {
 
   mutationCallback = (mutations: MutationRecord[]) => {
     for (const mutation of mutations) {
-      const {type, target: {localName, innerText}, addedNodes, removedNodes} = mutation
+      // @ts-ignore
+      const {type, target: {localName}, addedNodes, removedNodes} = mutation
       if (type === 'childList') {
         if (localName === 'button') {
           this.bombsToGo = handleBombsCount(addedNodes, this.bombsToGo, this.bombCounter, (count) => count - 1)
           this.bombsToGo = handleBombsCount(removedNodes, this.bombsToGo, this.bombCounter, (count) => count + 1)
         }
-        gameStatus.handleGameOver(innerText)
       }
     }
   }

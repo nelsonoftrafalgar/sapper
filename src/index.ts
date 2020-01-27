@@ -8,8 +8,8 @@ import RawBoard from './components/RawBoard'
 const table = document.createElement('table')
 const root = document.querySelector('.root')
 
-const BOARD_SIZE = 15
-const LEVEL = 0.4 // 0.4 - easy, 0.3 - normal, 0.2 - hard
+const BOARD_SIZE = 10 // 20 - large, 15 - medium, 10 - small
+const LEVEL = 0.3 // 0.4 - easy, 0.3 - normal, 0.2 - hard
 
 const {rawBoard} = new RawBoard(BOARD_SIZE, LEVEL)
 const {armedBoard} = new ArmedBoard(rawBoard)
