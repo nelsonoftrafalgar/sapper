@@ -1,6 +1,7 @@
 import { flagIcon, questionIcon } from '../assets/icons'
 
 import { clearWholeSector } from './clearWholeSector'
+import gameStatus from '../components/GameStatus'
 
 // tslint:disable: no-inner-html
 
@@ -32,6 +33,7 @@ export const handleRightClick = () => {
 export const handleLeftClick = function() {
   const parent: HTMLTableDataCellElement = this.parentElement
   parent.removeChild(this)
+  gameStatus.startGame()
   parent.dataset.checked = 'true'
   if (!parent.innerHTML) {
     clearWholeSector(parent)

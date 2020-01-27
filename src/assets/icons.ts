@@ -1,3 +1,5 @@
-export const bombIcon = '&#9762;'
+export const bombIcon = '&#9881;'
 export const flagIcon = '&#9873;'
 export const questionIcon = '&#63;'
+export const winIcon = '&#9786;'
+export const failIcon = '&#9760;'
