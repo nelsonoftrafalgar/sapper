@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --hot"
+    "start": "webpack-dev-server --mode development --hot",
+    "test": "jest --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/dom": "^6.11.0",
+    "@testing-library/jest-dom": "^5.0.2",
+    "jest": "^25.1.0",
+    "ts-jest": "^25.0.0",
     "tslint": "^6.0.0",
     "tslint-microsoft-contrib": "^6.2.0",
     "typescript": "^3.7.5",

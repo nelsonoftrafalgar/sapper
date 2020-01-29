@@ -7,7 +7,7 @@ export const handleBombsCount = (nodes: NodeList, count: number, counter: HTMLPa
   for (const node of nodes) {
     if (encodeIcon(node.textContent) === flagIcon) {
       const updatedCount = updateCount(count)
-      counter.innerText = String(updatedCount)
+      counter.textContent = String(updatedCount)
       return updatedCount
     }
   }
