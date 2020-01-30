@@ -12,12 +12,12 @@ class ArmedBoard {
     }))
   }
 
-  private validateCell = (gameBoard: IBoardItem[][]) => (cell: number[]) => {
+  validateCell = (gameBoard: IBoardItem[][]) => (cell: number[]) => {
     const exists = !cell.some((boardIndex) => boardIndex > (gameBoard.length - 1) || boardIndex < 0)
     return exists ? gameBoard[cell[0]][cell[1]] : ''
   }
 
-  private getMines = (ac: string[], val: IBoardItem) => val && val.value !== '1' ? [...ac, val] : ac
+  getMines = (ac: string[], val: IBoardItem) => val && val.value !== '1' ? [...ac, val] : ac
 }
 
 export default ArmedBoard

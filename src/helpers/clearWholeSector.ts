@@ -6,7 +6,7 @@ export const clearWholeSector = (parent: HTMLTableDataCellElement) => {
   proximityCells.forEach((cell) => {
     const proximityParent = document.querySelector(`td[id='${cell}']`) as HTMLTableDataCellElement
     if (proximityParent) {
-      if (!proximityParent.innerText && !proximityParent.dataset.checked) {
+      if (!proximityParent.textContent && !proximityParent.dataset.checked) {
         proximityParent.dataset.checked = 'true'
         clearWholeSector(proximityParent)
       }
