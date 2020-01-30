@@ -1,4 +1,5 @@
 import { bombIcon, failIcon, winIcon } from '../assets/icons'
+import { handleLeftClick, handleRightClick } from '../helpers/handleClick'
 
 // tslint:disable: no-inner-html
 import { encodeIcon } from '../helpers/encodeIcon'
@@ -15,6 +16,14 @@ class GameStatus {
 
   hasBomb = (content: string) => encodeIcon(content).includes(bombIcon)
 
+  disableCellEvents = () => {
+    const cells = document.querySelectorAll('.cell')
+    cells.forEach((cell) => {
+      const newCell = cell.cloneNode(true)
+      cell.parentNode.replaceChild(newCell, cell)
+    })
+  }
+
   winGame = () => {
     const parentsWithBombs = []
     const cells = document.querySelectorAll('.cell')
@@ -25,6 +34,7 @@ class GameStatus {
     const onlyBombs = parentsWithBombs.every((parent) => this.hasBomb(parent.innerHTML))
     if (onlyBombs) {
       this.setStatus(winIcon)
+      this.disableCellEvents()
     }
   }
 
@@ -53,6 +63,7 @@ class GameStatus {
   }
 
   handleGameOver = () => {
+    this.disableCellEvents()
     this.setStatus(failIcon)
     this.blowUpAllBombs()
   }
