@@ -8,7 +8,19 @@
 </head>
 <body>
   <div class="root">
-    <button class='restart'>restart</button>
+    <div class="settings">
+      <select class='size' autocomplete='off'>
+        <option value="10">small</option>
+        <option value="15">medium</option>
+        <option value="20">large</option>
+      </select>
+      <button class='restart'>restart</button>
+      <select class='level' autocomplete='off'>
+        <option value="0.4">easy</option>
+        <option value="0.3">normal</option>
+        <option value="0.2">hard</option>
+      </select>
+    </div>
     <div class="status">
       <p class='bomb-counter'></p>
       <p class='game-result'></p>

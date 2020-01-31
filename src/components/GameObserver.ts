@@ -13,7 +13,6 @@ class GameObserver {
 
   mutationCallback = (mutations: MutationRecord[]) => {
     for (const mutation of mutations) {
-      // @ts-ignore
       const {type, target: {localName}, addedNodes, removedNodes} = mutation
       if (type === 'childList') {
         if (localName === 'button') {

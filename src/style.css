@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #000;
+  background: #484848;
   flex-direction: column;
 }
 
@@ -39,12 +39,16 @@
   background: #feb85e;
 }
 
-.status {
-  width: 200px;
+.status, .settings {
+  width: 300px;
   height: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.settings {
+  margin-bottom: 10px;
 }
 
 .bomb-counter, .time-counter {
@@ -57,4 +61,21 @@
 .game-result {
   color: yellow;
   font-size: 33px;
+}
+
+.restart, .size, .level {
+  font-family: sans-serif;
+  border: 1px solid #feb85e;;
+  color: #feb85e;
+  background: transparent;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.size, .level {
+  -moz-appearance: none;
+}
+
+.size option, .level option {
+  color: #000;
 }

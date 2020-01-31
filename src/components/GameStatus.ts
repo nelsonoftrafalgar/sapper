@@ -1,5 +1,4 @@
 import { bombIcon, failIcon, winIcon } from '../assets/icons'
-import { handleLeftClick, handleRightClick } from '../helpers/handleClick'
 
 // tslint:disable: no-inner-html
 import { encodeIcon } from '../helpers/encodeIcon'
