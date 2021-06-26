@@ -4,12 +4,10 @@ import { clearWholeSector } from '../helpers/clearWholeSector'
 import gameStatus from '../components/GameStatus'
 
 class Cell {
-	cell: HTMLButtonElement
+	cell: HTMLElement
 	clickCache = 0
 
-	constructor() {
-		const cell = document.createElement('button')
-		cell.classList.add('cell')
+	constructor(cell: HTMLElement) {
 		cell.addEventListener('click', this.handleLeftClick)
 		cell.addEventListener('contextmenu', this.handleRightClick)
 

@@ -7,9 +7,10 @@ const start = document.querySelector('.start')!
 const rowsSelect = document.querySelector('.rows')!
 const colsSelect = document.querySelector('.cols')!
 const levelSelect = document.querySelector('.level')!
+const root = document.querySelector('.root')!
 
 document.addEventListener('DOMContentLoaded', () => {
-	const { setGame } = new Settings()
+	const { setGame } = new Settings(root)
 	const { handleSetCols, handleSetLevel, handleSetRows } = boardDetails
 
 	rowsSelect.addEventListener('change', handleSetRows)

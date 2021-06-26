@@ -6,17 +6,14 @@ import { colors } from '../assets/colors'
 import { createElementWithClass } from '../helpers/createElementWithClass'
 
 class Game {
-	bombsCount = 0
-
 	setCell =
 		(tr: HTMLElement) =>
 		({ value, id }: IBoardItem) => {
 			const td = createElementWithClass('td', 'table-data')
-			const { cell } = new Cell()
+			const { cell } = new Cell(createElementWithClass('button', 'cell'))
 			const isBomb = value === 0
 			td.innerHTML = isBomb ? bombIcon : value < 9 ? String(value) : ''
 			if (isBomb) {
-				this.bombsCount++
 				boardDetails.incrementBombs()
 			}
 			td.setAttribute('id', String(id))

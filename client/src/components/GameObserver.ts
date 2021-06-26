@@ -1,16 +1,17 @@
+import boardDetails from './BoardDetails'
 import { encodeIcon } from '../helpers/encodeIcon'
 import { flagIcon } from '../assets/icons'
 
 type UpdateCount = () => number
 
 class GameObserver {
-	gameObserver: MutationObserver
-	bombsToGo: number = 0
-	bombCounter = document.querySelector('.bomb-counter') as HTMLParagraphElement
+	gameObserver
+	bombsToGo = boardDetails.getBombCount()
+	bombCounter
 
-	constructor(bombsToGo: number) {
-		this.bombCounter.innerText = String(bombsToGo)
-		this.bombsToGo = bombsToGo
+	constructor(bombCounter: HTMLParagraphElement) {
+		this.bombCounter = bombCounter
+		this.bombCounter.innerText = String(this.bombsToGo)
 		this.gameObserver = new MutationObserver(this.mutationCallback)
 	}
 

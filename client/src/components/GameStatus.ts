@@ -4,9 +4,14 @@ import boardDetails from './BoardDetails'
 import { encodeIcon } from '../helpers/encodeIcon'
 
 class GameStatus {
-	interval = 0
+	interval
 	isInitialClick = true
-	status = document.querySelector('.game-result') as HTMLParagraphElement
+	status
+
+	constructor(interval: number, status: HTMLParagraphElement) {
+		this.interval = interval
+		this.status = status
+	}
 
 	setStatus = (icon: string) => {
 		clearInterval(this.interval)
@@ -69,6 +74,6 @@ class GameStatus {
 	}
 }
 
-const gameStatus = new GameStatus()
+const gameStatus = new GameStatus(0, document.querySelector('.game-result')!)
 
 export default gameStatus

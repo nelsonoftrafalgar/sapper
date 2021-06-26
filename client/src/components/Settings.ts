@@ -8,12 +8,16 @@ import { destroyBoard } from '../helpers/destroyBoard'
 
 export class Settings {
 	game = new Game()
-	root = document.querySelector('.root')!
 	isGameLoaded = false
+	root
+
+	constructor(root: Element) {
+		this.root = root
+	}
 
 	setGame = async () => {
-		const start = document.querySelector('.start')!
-		start.innerHTML = 'restart'
+		const startButton = document.querySelector('.start')!
+		startButton.innerHTML = 'restart'
 
 		if (this.isGameLoaded) destroyBoard(this.root)
 		this.isGameLoaded = true
@@ -35,7 +39,6 @@ export class Settings {
 	}
 
 	appendBoardToDOM = (board?: TBoard) => {
-		this.game.bombsCount = 0
 		boardDetails.resetBombs()
 		const table = document.createElement('table')!
 		board?.forEach(this.game.createGame(table))
@@ -43,7 +46,7 @@ export class Settings {
 	}
 
 	startObserver = () => {
-		const { gameObserver } = new GameObserver(this.game.bombsCount)
+		const { gameObserver } = new GameObserver(document.querySelector('.bomb-counter')!)
 		gameObserver.observe(this.root, {
 			childList: true,
 			subtree: true,
