@@ -20,15 +20,16 @@ class Cell {
 		const parent = this.cell.parentElement!
 		const { startGame, hasBomb, handleGameOver } = gameStatus
 		parent.removeChild(this.cell)
-		startGame()
-		parent.dataset.checked = 'true'
-		if (!parent.innerHTML) {
-			clearWholeSector(parent)
-		}
 		if (hasBomb(parent.innerHTML)) {
 			parent.style.background = 'red'
 			handleGameOver()
+		} else {
+			parent.dataset.checked = 'true'
 		}
+		if (!parent.innerHTML) {
+			clearWholeSector(parent)
+		}
+		startGame()
 	}
 
 	handleRightClick = (e: Event) => {

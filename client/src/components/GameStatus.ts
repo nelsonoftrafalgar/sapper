@@ -1,5 +1,6 @@
 import { bombIcon, failIcon, winIcon } from '../assets/icons'
 
+import boardDetails from './BoardDetails'
 import { encodeIcon } from '../helpers/encodeIcon'
 
 class GameStatus {
@@ -22,22 +23,23 @@ class GameStatus {
 		})
 	}
 
-	checkWinGame = () => {
-		const parentsWithBombs: HTMLElement[] = []
-		const cells = document.querySelectorAll('.cell')
-		cells.forEach((cell) => {
-			parentsWithBombs.push(cell.parentElement!)
-		})
+	checkIsWin = () => {
+		const totalCells = boardDetails.rows * boardDetails.cols
+		const checkedCells = document.querySelectorAll(`td[data-checked=true]`).length
+		const isWin = totalCells - checkedCells === boardDetails.bombs
 
-		const onlyBombs = parentsWithBombs.every((parent) => this.hasBomb(parent.innerHTML))
-		if (onlyBombs) {
+		if (isWin) {
 			this.setStatus(winIcon)
 			this.disableCellEvents()
 		}
 	}
 
 	startGame = () => {
-		this.checkWinGame()
+		this.handleTimer()
+		this.checkIsWin()
+	}
+
+	handleTimer = () => {
 		if (this.isInitialClick) {
 			const timer = document.querySelector('.time-counter')!
 			let time = 0

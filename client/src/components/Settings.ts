@@ -2,33 +2,14 @@ import Game from './Game'
 import GameObserver from './GameObserver'
 import { TBoard } from '../types'
 import axios from 'axios'
+import boardDetails from './BoardDetails'
 import { createElementWithClass } from '../helpers/createElementWithClass'
 import { destroyBoard } from '../helpers/destroyBoard'
 
 export class Settings {
 	game = new Game()
 	root = document.querySelector('.root')!
-	rows = 10
-	cols = 10
-	level = 0.9
 	isGameLoaded = false
-
-	handleSetRows = (e: Event) => {
-		const { value } = e.target as HTMLSelectElement
-		this.rows = +value
-	}
-
-	handleSetCols = (e: Event) => {
-		const { value } = e.target as HTMLSelectElement
-		this.cols = +value
-	}
-
-	handleSetLevel = (e: Event) => {
-		const { value } = e.target as HTMLSelectElement
-		this.level = +value
-	}
-
-	handleSetGame = () => this.setGame()
 
 	setGame = async () => {
 		const start = document.querySelector('.start')!
@@ -47,7 +28,7 @@ export class Settings {
 	}
 
 	fetchBoard = async () => {
-		const { rows, cols, level } = this
+		const { rows, cols, level } = boardDetails
 		return await axios
 			.get<{ board: TBoard }>('http://localhost:5000/api', { params: { rows, cols, level } })
 			.catch(this.handleError)
@@ -55,6 +36,7 @@ export class Settings {
 
 	appendBoardToDOM = (board?: TBoard) => {
 		this.game.bombsCount = 0
+		boardDetails.resetBombs()
 		const table = document.createElement('table')!
 		board?.forEach(this.game.createGame(table))
 		this.root.appendChild(table)

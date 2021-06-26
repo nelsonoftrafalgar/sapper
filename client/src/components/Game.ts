@@ -1,5 +1,6 @@
 import Cell from './Cell'
 import { IBoardItem } from '../types'
+import boardDetails from './BoardDetails'
 import { bombIcon } from '../assets/icons'
 import { colors } from '../assets/colors'
 import { createElementWithClass } from '../helpers/createElementWithClass'
@@ -16,6 +17,7 @@ class Game {
 			td.innerHTML = isBomb ? bombIcon : value < 9 ? String(value) : ''
 			if (isBomb) {
 				this.bombsCount++
+				boardDetails.incrementBombs()
 			}
 			td.setAttribute('id', String(id))
 			td.appendChild(cell)
