@@ -1,2 +1,0 @@
-# saper
-TypeScript, Jest, CSS
