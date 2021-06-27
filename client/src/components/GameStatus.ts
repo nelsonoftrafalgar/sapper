@@ -48,7 +48,7 @@ class GameStatus {
 		if (this.isInitialClick) {
 			const timer = document.querySelector('.time-counter')!
 			let time = 0
-			this.interval = setInterval(() => {
+			this.interval = window.setInterval(() => {
 				time++
 				timer.innerHTML = String(time)
 			}, 1000)
