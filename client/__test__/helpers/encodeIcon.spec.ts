@@ -1,11 +1,6 @@
-/**
- * @jest-environment jsdom
- */
+import { bombIcon, failIcon, flagIcon, questionIcon, winIcon } from '../../src/assets/icons'
 
-import { bombIcon, failIcon, flagIcon, questionIcon, winIcon } from '../src/assets/icons'
-import { expect, test } from '@jest/globals'
-
-import { encodeIcon } from '../src/helpers/encodeIcon'
+import { encodeIcon } from '../../src/helpers/encodeIcon'
 
 const testData = [bombIcon, failIcon, flagIcon, winIcon, questionIcon]
 

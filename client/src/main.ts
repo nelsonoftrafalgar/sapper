@@ -10,7 +10,7 @@ const levelSelect = document.querySelector('.level')!
 const root = document.querySelector('.root')!
 
 document.addEventListener('DOMContentLoaded', () => {
-	const { setGame } = new Settings(root)
+	const { setGame } = new Settings(root, 'http://localhost:5000/api')
 	const { handleSetCols, handleSetLevel, handleSetRows } = boardDetails
 
 	rowsSelect.addEventListener('change', handleSetRows)

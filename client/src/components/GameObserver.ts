@@ -11,7 +11,7 @@ class GameObserver {
 
 	constructor(bombCounter: HTMLParagraphElement) {
 		this.bombCounter = bombCounter
-		this.bombCounter.innerText = String(this.bombsToGo)
+		this.bombCounter.innerHTML = String(this.bombsToGo)
 		this.gameObserver = new MutationObserver(this.mutationCallback)
 	}
 

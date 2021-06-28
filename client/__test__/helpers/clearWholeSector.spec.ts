@@ -1,13 +1,5 @@
-/**
- * @jest-environment jsdom
- */
-
-import '@testing-library/jest-dom/extend-expect'
-
-import { beforeEach, expect, test } from '@jest/globals'
-
-import { clearWholeSector } from '../src/helpers/clearWholeSector'
-import { createElementWithClass } from '../src/helpers/createElementWithClass'
+import { clearWholeSector } from '../../src/helpers/clearWholeSector'
+import { createElementWithClass } from '../../src/helpers/createElementWithClass'
 
 interface IDataItem {
 	id: string
@@ -105,7 +97,7 @@ test('it should clear adjacent sectors', () => {
 	clearWholeSector(parent)
 	const cells = document.querySelectorAll('.cell')
 	expect(cells.length).toEqual(3)
-	expect(document.getElementById('4,1')?.firstElementChild).not.toBeNull()
-	expect(document.getElementById('5,1')?.firstElementChild).not.toBeNull()
-	expect(document.getElementById('1,4')?.firstElementChild).not.toBeNull()
+	expect(document.getElementById('4,1')?.firstElementChild).toBeInTheDocument()
+	expect(document.getElementById('5,1')?.firstElementChild).toBeInTheDocument()
+	expect(document.getElementById('1,4')?.firstElementChild).toBeInTheDocument()
 })

@@ -1,11 +1,5 @@
-/**
- * @jest-environment jsdom
- */
-
-import { expect, test } from '@jest/globals'
-
-import { destroyBoard } from '../src/helpers/destroyBoard'
-import gameStatus from '../src/components/GameStatus'
+import { destroyBoard } from '../../src/helpers/destroyBoard'
+import gameStatus from '../../src/components/GameStatus'
 
 test('it removes board from DOM and resets timer', () => {
 	document.body.innerHTML = `

@@ -10,9 +10,11 @@ export class Settings {
 	game = new Game()
 	isGameLoaded = false
 	root
+	apiUrl
 
-	constructor(root: Element) {
+	constructor(root: Element, apiUrl: string) {
 		this.root = root
+		this.apiUrl = apiUrl
 	}
 
 	setGame = async () => {
@@ -34,7 +36,7 @@ export class Settings {
 	fetchBoard = async () => {
 		const { rows, cols, level } = boardDetails
 		return await axios
-			.get<{ board: TBoard }>('http://localhost:5000/api', { params: { rows, cols, level } })
+			.get<{ board: TBoard }>(this.apiUrl, { params: { rows, cols, level } })
 			.catch(this.handleError)
 	}
 
@@ -68,8 +70,8 @@ export class Settings {
 			loader.innerHTML = 'Loading...'
 			this.root.appendChild(loader)
 		} else {
-			const loader = document.querySelector('.loader')!
-			this.root.removeChild(loader)
+			const loader = document.querySelector('.loader')
+			if (loader) this.root.removeChild(loader)
 		}
 	}
 }

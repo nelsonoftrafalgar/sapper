@@ -1,10 +1,4 @@
-/**
- * @jest-environment jsdom
- */
-
-import { expect, test } from '@jest/globals'
-
-import { createElementWithClass } from '../src/helpers/createElementWithClass'
+import { createElementWithClass } from '../../src/helpers/createElementWithClass'
 
 const testData = [
 	{
@@ -33,7 +27,7 @@ test('it creates an element with class', () => {
 	testData.forEach((test) => {
 		const { name, className } = test
 		const element = createElementWithClass(name, className)
-		expect(element.classList.contains(className)).toBeTruthy()
+		expect(element).toHaveClass(className)
 		expect(element.localName).toEqual(name)
 	})
 })

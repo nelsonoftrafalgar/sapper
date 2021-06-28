@@ -1,6 +1,4 @@
-import { expect, test } from '@jest/globals'
-
-import { getProximityCells } from '../src/helpers/getProximityCells'
+import { getProximityCells } from '../../src/helpers/getProximityCells'
 
 const testData = [
 	{
