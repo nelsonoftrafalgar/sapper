@@ -3,7 +3,7 @@ import { bombIcon, failIcon, winIcon } from '../assets/icons'
 import boardDetails from './BoardDetails'
 import { encodeIcon } from '../helpers/encodeIcon'
 
-class GameStatus {
+export class GameStatus {
 	interval
 	isInitialClick = true
 	status
