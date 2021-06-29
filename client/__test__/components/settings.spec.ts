@@ -19,7 +19,7 @@ test('it should set game', async () => {
 	expect(root.querySelector('.table-row')).toBeInTheDocument()
 	expect(root.querySelector('.table-data')).toBeInTheDocument()
 	expect(root.querySelector('.loader')).not.toBeInTheDocument()
-	expect(root.querySelector('.bomb-counter')?.innerHTML).toEqual('3')
+	expect(root.querySelector('.bomb-counter')?.innerHTML).toEqual('6')
 })
 
 test('it should fetch and return data', async () => {

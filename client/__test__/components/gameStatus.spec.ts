@@ -30,7 +30,7 @@ test('it should remove event listeners from all cells', async () => {
 	const root = document.querySelector('.root')!
 	const settings = new Settings(root, '/api')
 	settings.setGame()
-	await waitFor(() => expect(document.querySelectorAll('.cell')).toHaveLength(4))
+	await waitFor(() => expect(document.querySelectorAll('.cell')).toHaveLength(100))
 	const cells = document.querySelectorAll('.cell')
 	const spies: jest.SpyInstance[] = []
 	cells.forEach((cell) => {
@@ -77,9 +77,9 @@ test('it should detonate all bombs', async () => {
 	const root = document.querySelector('.root')!
 	const settings = new Settings(root, '/api')
 	settings.setGame()
-	await waitFor(() => expect(document.querySelectorAll('.cell')).toHaveLength(4))
+	await waitFor(() => expect(document.querySelectorAll('.cell')).toHaveLength(100))
 	gameStatus.blowUpAllBombs()
-	expect(document.querySelectorAll('.cell')).toHaveLength(1)
+	expect(document.querySelectorAll('.cell')).toHaveLength(94)
 })
 
 test('it should end game', () => {
