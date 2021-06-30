@@ -1,6 +1,5 @@
 # dependencies
 client/node_modules
-client/dist
 client/dist-ssr
 /.pnp
 .pnp.js
