@@ -31,6 +31,6 @@ class BoardDetails {
 	getBombCount = () => this.bombs
 }
 
-const boardDetails = new BoardDetails(10, 10, 0, 0.5)
+const boardDetails = new BoardDetails(10, 10, 0, 0.9)
 
 export default boardDetails
