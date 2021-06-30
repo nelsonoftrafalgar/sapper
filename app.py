@@ -2,7 +2,7 @@ from flask import Flask, send_from_directory, jsonify, request
 from flask_cors import CORS, cross_origin
 from board_generator import BoardGenerator
 
-app = Flask(__name__, static_folder='client/build', static_url_path='')
+app = Flask(__name__, static_folder='client/dist', static_url_path='')
 cors = CORS(app)
 
 
@@ -22,4 +22,4 @@ def serve():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0')
