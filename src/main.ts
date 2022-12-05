@@ -10,7 +10,7 @@ const levelSelect = document.querySelector('.level')!
 const root = document.querySelector('.root')!
 
 document.addEventListener('DOMContentLoaded', () => {
-	const { setGame } = new Settings(root, '/api')
+	const { setGame } = new Settings(root, `${import.meta.env.VITE_API_URL}/api`)
 	const { handleSetCols, handleSetLevel, handleSetRows } = boardDetails
 
 	rowsSelect.addEventListener('change', handleSetRows)
